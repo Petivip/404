@@ -17,10 +17,10 @@ public class SecurityConfigration extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests().anyRequest().authenticated().and().formLogin();
+        http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll();
     }
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.inMemoryAuthentication().withUser("users").password(passwordEncoder().encode("pass")).authorities("USERs");
+        auth.inMemoryAuthentication().withUser("users").password(passwordEncoder().encode("pass")).authorities("USER");
     }
 }
